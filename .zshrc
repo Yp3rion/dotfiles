@@ -116,9 +116,7 @@ alias ..4='cd ../../../..'
 alias cp='cp -i'
 alias rm='trash'
 alias mv='mv -i'
-
-function gdb() { pyenv activate gdb; command gdb "$@"; pyenv deactivate }
-
+alias ll='ls -lah'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
