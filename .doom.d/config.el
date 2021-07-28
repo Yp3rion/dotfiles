@@ -105,13 +105,6 @@
         org-ref-default-bibliography '("~/PhD/references/library.bib")
         org-ref-pdf-directory "~/PhD/references/pdfs/"))
 
-;; Configure org-roam-bibtex
-(use-package! org-roam-bibtex
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :config
-  (require 'org-ref))
-
 ;; Configure org-journal; replace the default org-journal-mode-map binding C-c C-s from org-journal-search to
 ;; org-schedule (preferred to using org-journal-new-scheduled-entry). org-journal-search is still accessible via
 ;; the binding SPC m s s.
@@ -132,6 +125,16 @@
                           (sequence "Q(q)" "|" "A(a!)")
                           (sequence "[ ](T)" "[-](S!)" "[?](W!)" "|" "[X](D!)" "[/](K!)")))
 
-(use-package! jupyter)
+(use-package! jupyter
+  :config
+  (setq jupyter-runtime-directory (shell-command-to-string "jupyter --runtime-dir")))
 
-(org-babel-do-load-languages 'org-babel-load-languages (append org-babel-load-languages '((jupyter     . t))))
+(after! org (plist-put org-format-latex-options :scale 1))
+
+;; Configure org-roam-bibtex
+(use-package! org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :config
+  (require 'org-ref))
+

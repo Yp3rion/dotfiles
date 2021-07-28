@@ -52,5 +52,4 @@
 ;; Installed packages:
 (package! org-roam-server)
 (package! org-ref)
-(package! org-roam-bibtex)
-(package! jupyter)
+(package! org-roam-bibtex :pin "563cd8ff5ffac4c67b50d08be4bdf85d94285986")
